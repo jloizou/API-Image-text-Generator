@@ -7,6 +7,7 @@ const App = () => {
   // Store the name of the person we are going to create
   // NOTE: this is the value in the form input
   const [input, setInput] = useState("");
+  const [image , setImage] = useState("")
   useEffect(() => {
     // 1. On component load/mount let's make a call to our API and show some data on the page....
     handleFetch();
@@ -20,6 +21,27 @@ const App = () => {
       setData(res)
     })
   }
+
+  const handleImageSubmit = (e) => { 
+    console.log("going to submit image")
+    e.preventDefault(); 
+    const fetchImageOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({"imgurl": image})
+    }
+    fetch('http://localhost:8080/create', fetchImageOptions)
+      .then(res => res.json())
+      .then(res => {
+        console.log("YAY WE GOT OUR RESPONSE BACK....")
+        handleFetch();
+      })
+  }
+
+
+  
+
+
   const handleSubmit = (e) => {
     console.log("I'm going to submit");
     // Stop our page submitting
@@ -67,14 +89,21 @@ const App = () => {
       {/* We'll use this later once we have some information in our database
           to show on the page...... */}  
       {data.map(user =>(
+        <>
         <p>{user.name} <button onClick={() => handleDelete(user)}>Delete</button></p>
+        <img src={user.imgurl}></img>
+        </>
       ))}
       <form>
         <label>Team member name</label>
         {/* We need to keep track of this textbox so we know what to send */}
         <input type="text" onChange={(e) => setInput(e.target.value)}/>
+        <input type="text" onChange={(e) => setImage(e.target.value)}/>
+
         {/* ON CLICK - we need to send some information to the API */}
-        <button onClick={handleSubmit}>Create</button>
+        <button onClick={handleSubmit}>Create Text</button>
+        <button onClick={handleImageSubmit}>Create Image</button>
+
       </form>
     </div>
   );
