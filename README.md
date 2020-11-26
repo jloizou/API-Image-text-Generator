@@ -1,4 +1,6 @@
-# API-Image-text-Generator
+# Still in progress
+
+## API-Image-text-Generator
 
 This project was generated with React, Node.js, Mongodb, HTML5, Javascript and CSS
 
