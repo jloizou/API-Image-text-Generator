@@ -1,4 +1,4 @@
-# Still in progress
+# Still in progress, not functional currently
 
 ## API-Image-text-Generator
 
