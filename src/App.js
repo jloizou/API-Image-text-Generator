@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import "./App.css";
+import styles from "./App.module.scss"
 
 const App = () => {
   // Store our data/collections here for us to show
@@ -84,27 +85,38 @@ const App = () => {
       })
   }
   return (
-    <div className="App">
-      <h1>Nology Team....</h1>
+    <div className={styles.App}>
+      <h1>Generator!</h1>
       {/* We'll use this later once we have some information in our database
           to show on the page...... */}  
-      {data.map(user =>(
-        <>
-        <p>{user.name} <button onClick={() => handleDelete(user)}>Delete</button></p>
-        <img src={user.imgurl}></img>
-        </>
-      ))}
+      
       <form>
-        <label>Team member name</label>
-        {/* We need to keep track of this textbox so we know what to send */}
-        <input type="text" onChange={(e) => setInput(e.target.value)}/>
-        <input type="text" onChange={(e) => setImage(e.target.value)}/>
+        <div className={styles.formSect}>
+        <label>Add Text:</label>
 
+        <input type="text" onChange={(e) => setInput(e.target.value)}/>
+        </div>
+        <div className={styles.formSect}>
+        <label>Add Image By Url:</label>
+        <input type="text" onChange={(e) => setImage(e.target.value)}/>
+        </div>
         {/* ON CLICK - we need to send some information to the API */}
+        <div className={styles.buttonCont}>
         <button onClick={handleSubmit}>Create Text</button>
         <button onClick={handleImageSubmit}>Create Image</button>
+        </div>
 
       </form>
+      <div className={styles.generatingCont}>
+      {data.map(user =>(
+        <div className={styles.generatedField}>
+        <img src={user.imgurl} className={styles.generatedImg}></img>
+        <p className={styles.topText}>{user.name} </p>
+        <button onClick={() => handleDelete(user)}>Delete</button>
+        </div>
+      ))}
+      </div>
+      <p>{process.env.REACT_APP_BASE_URL}</p>
     </div>
   );
 }

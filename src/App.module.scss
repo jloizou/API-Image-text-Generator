@@ -1,27 +1,84 @@
+* { 
+    margin: 0;
+}
 
+h1 { 
+    margin: 2%;
+    color: #1d3557;
+}
 .App{ 
-    height: 100vh;
-    width: 100vw;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    // background-color: #fff1e6;
+}
+label{ 
+    margin: 10px;
+    color: #1d3557;
+
+}
+form{ 
+    display: flex;
+    flex-direction: column;
 }
 
-.btn{ 
-    width: 20vw;
+.formSect{ 
+    display: flex;
+    margin: 10%;
+    height: 100%;
 }
-
-.head{ 
-    border: 2px black solid;
+.buttonCont{ 
+    margin: 5%;
+    display: flex;
+    justify-content: space-evenly;
 }
-.artText{ 
-    border: 2px black solid;
-}
-.image{ 
+.generatedField{ 
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 20vh;
+    margin: 0;
     display: inline-block;
-    border: 2px black solid;
-    height: 70vh;
-    z-index: -5;
+    // height: 20%;
+    height: 10vh;
+}
+
+input{ 
+    background-color: #d3e3e4;
+    align-self: center;
+    border-radius: 5%;
+    height: 60px;
+}
+
+button{ 
+    cursor: pointer;
+    color: #53729e;
+    display: inline;
+    width: 100px;
+    height: 40px;
+    margin: 8%;
+    background-color: #d3e3e4;
+    border-radius: 20px;
+}
+.generatingCont{ 
+    margin-top: 2%;
+    display: flex;
+}
+
+.generatedImg{ 
+    height: 100%;
+}
+
+.toptext{ 
+    display: flex;
+    flex-direction: column;
 
 }
+
+//game plan: 
+//style the generated area and the generated content, card style
+//start with the general container and then the items
+
+//fonts + for written and created text if it isnt already
+//colours last 
